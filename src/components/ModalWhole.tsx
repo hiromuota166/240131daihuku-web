@@ -15,9 +15,7 @@ const ModalWhole: React.FC<ModalWholeProps> = ({ isVisible, onClose, date }) => 
     <>
       <Modal title={date?.format('YYYY-MM-DD')} open={isVisible} onOk={onClose} onCancel={onClose}>
         {/* モーダルの内容 */}
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        {/* 他のコンポーネントでバックエンドからDB検索で何を作ったかを取得して表示 */}
       </Modal>
     </>
   );

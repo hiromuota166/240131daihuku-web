@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import type { Dayjs } from 'dayjs';
 import type { BadgeProps, CalendarProps } from 'antd';
 import { Badge, Calendar } from 'antd';
-import { Modal } from 'antd';
-import '../styles/CalendarDash.css'
 import ModalWhole from './ModalWhole';
 import { SelectInfo } from 'antd/es/calendar/generateCalendar';
 import dayjs from 'dayjs';
