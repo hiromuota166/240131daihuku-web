@@ -1,7 +1,7 @@
 // モーダルのUIを実装するコンポーネント
 'use client';
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
+import React from 'react';
+import { Modal } from 'antd';
 import type { Dayjs } from 'dayjs';
 
 interface ModalWholeProps {
