@@ -2,25 +2,19 @@
 'use client';
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
+import type { Dayjs } from 'dayjs';
 
-const ModalWhole: React.FC<{ isVisible: boolean; onClose: () => void; }> = ({ isVisible, onClose }) => {
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+interface ModalWholeProps {
+  isVisible: boolean;
+  onClose: () => void;
+  date: Dayjs; //日付を受け取る
+}
 
-  // const showModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const handleOk = () => {
-  //   setIsModalOpen(false);
-  // };
-
-  // const handleCancel = () => {
-  //   setIsModalOpen(false);
-  // };
-
+const ModalWhole: React.FC<ModalWholeProps> = ({ isVisible, onClose, date }) => {
   return (
     <>
-      <Modal title="Basic Modal" open={isVisible} onOk={onClose} onCancel={onClose}>
+      <Modal title={date?.format('YYYY-MM-DD')} open={isVisible} onOk={onClose} onCancel={onClose}>
+        {/* モーダルの内容 */}
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>

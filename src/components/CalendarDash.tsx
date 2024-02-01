@@ -7,6 +7,7 @@ import { Modal } from 'antd';
 import '../styles/CalendarDash.css'
 import ModalWhole from './ModalWhole';
 import { SelectInfo } from 'antd/es/calendar/generateCalendar';
+import dayjs from 'dayjs';
 
 const getListData = (value: Dayjs) => {
   let listData;
@@ -47,6 +48,12 @@ const getMonthData = (value: Dayjs) => {
 
 const CalenderDash: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs()); // 選択された日付を管理する状態
+
+  const onSelectDate = (date: Dayjs) => {
+    setSelectedDate(date); // 選択された日付を状態に保存
+    setIsModalOpen(true); // モーダルを開く
+  }
 
   const monthCellRender = (value: Dayjs) => {
     const num = getMonthData(value);
@@ -87,7 +94,7 @@ const CalenderDash: React.FC = () => {
           setIsModalOpen(true);
         }}
       />
-      <ModalWhole isVisible={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ModalWhole isVisible={isModalOpen} onClose={() => setIsModalOpen(false)} date={selectedDate} />
     </>
   )
 };
