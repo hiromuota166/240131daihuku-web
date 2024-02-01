@@ -5,6 +5,8 @@ import type { BadgeProps, CalendarProps } from 'antd';
 import { Badge, Calendar } from 'antd';
 import { Modal } from 'antd';
 import '../styles/CalendarDash.css'
+import ModalWhole from './ModalWhole';
+import { SelectInfo } from 'antd/es/calendar/generateCalendar';
 
 const getListData = (value: Dayjs) => {
   let listData;
@@ -44,6 +46,8 @@ const getMonthData = (value: Dayjs) => {
 };
 
 const CalenderDash: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const monthCellRender = (value: Dayjs) => {
     const num = getMonthData(value);
     return num ? (
@@ -78,12 +82,12 @@ const CalenderDash: React.FC = () => {
     <>
       <Calendar 
         cellRender={cellRender}
-        onSelect={(date, {source}) =>{
-          if (source === 'date') {
-            console.log('Panel Select', date.format('YYYY-MM-DD'));
-          }
+        onSelect={(date: Dayjs, SelectInfo: SelectInfo) =>{
+          console.log('Panel Select', date.format('YYYY-MM-DD'));
+          setIsModalOpen(true);
         }}
       />
+      <ModalWhole isVisible={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )
 };
